@@ -6,7 +6,7 @@
           <h1>
             Workflow objects of
             <v-chip color="primary" class="white--text">
-              <v-icon left>mdi-sitemap</v-icon>
+              <v-icon start>mdi-sitemap</v-icon>
               <span v-text="workflow.identifier"></span>
             </v-chip>
           </h1>
@@ -20,12 +20,12 @@
             :items-per-page="10"
             class="elevation-1"
           >
-            <template v-slot:item.action="{ item }">
-              <v-tooltip top v-if="has_change_workflow_permission">
-                <template v-slot:activator="{ on }">
+            <template v-slot:[`item.action`]="{ item }">
+              <v-tooltip location="top" v-if="has_change_workflow_permission">
+                <template v-slot:activator="{ props }">
                   <v-icon
                     class="mr-1"
-                    v-on="on"
+                    v-bind="props"
                     color="primary"
                     @click="goToTimeline(item)"
                   >mdi-timeline-text</v-icon>
@@ -33,11 +33,11 @@
                 <span>View & Edit Timeline</span>
               </v-tooltip>
 
-              <v-tooltip top v-else>
-                <template v-slot:activator="{ on }">
+              <v-tooltip location="top" v-else>
+                <template v-slot:activator="{ props }">
                   <v-icon
                     class="mr-1"
-                    v-on="on"
+                    v-bind="props"
                     color="primary"
                     @click="goToViewTimeline(item)"
                   >mdi-timeline-text</v-icon>
@@ -45,12 +45,12 @@
                 <span>View Timeline</span>
               </v-tooltip>
 
-              <v-tooltip top>
-                <template v-slot:activator="{ on }">
+              <v-tooltip location="top">
+                <template v-slot:activator="{ props }">
                   <v-btn
                     icon
                     color="warning"
-                    v-on="on"
+                    v-bind="props"
                     @click="showDeletingDialog(item)"
                     :disabled="!has_delete_workflow_permission"
                   >
@@ -84,9 +84,6 @@
 </template>
 
 <script>
-import EmptyState from "@/components/EmptyState.vue";
-import WorkflowIllustration from "@/components/WorkflowIllustration.vue";
-
 import { Workflow } from "@/models/models";
 import { emit_success } from "@/helpers/event_bus";
 import { auth, WORKFLOW } from "@/helpers/auth";
@@ -94,10 +91,6 @@ import http from "@/helpers/http";
 
 export default {
   name: "ListWorkflowObjectsPage",
-  components: {
-    EmptyState,
-    WorkflowIllustration
-  },
   data: () => ({
     initialized: false,
     workflow_loading: false,
@@ -149,8 +142,8 @@ export default {
       return http
         .get(`/workflow/object/list/${this.workflow.id}/`, response => {
           this.headers = response.data.headers
-            .map(key => ({ text: key, value: key, align: "left" }))
-            .concat([{ text: "Actions", value: "action", sortable: false }]);
+            .map(key => ({ title: key, key: key, align: "start" }))
+            .concat([{ title: "Actions", key: "action", sortable: false }]);
           this.workflow_objects = response.data.workflow_objects.map(workflow_object => ({ ...workflow_object, identifier: workflow_object.__str }));
         })
         .finally(() => (this.workflow_object_loading = false));

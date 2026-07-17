@@ -10,29 +10,29 @@ Getting Started
 Requirements
 ------------
 
-* `django-river`_ >= 3.2.0
-* Any ``Python`` version that is supported by `django-river`_
-* Any ``Django`` version that is supported by `django-river`_
+* `xii-django-river`_ >= 4.0.0
+* Python 3.10+ (whatever is supported by `xii-django-river`_)
+* Django 4.2-6.0 (whatever is supported by `xii-django-river`_)
 * Any browser that is supported by `Vuetify`_ (`Browser Support`_)
 
 .. _`Browser Support`: https://vuetifyjs.com/en/getting-started/browser-support#browser-support
 .. _`Vuetify`: https://vuetifyjs.com/en/
-.. _`django-river`: https://github.com/javrasya/django-river
+.. _`xii-django-river`: https://github.com/xiidigital/xii-django-river
 
 Installation
 ------------
 .. note::
     Before you can set up your workflow, your app
-    integration with ``django-river`` must be done.
-    Don't worry it is with the easiest setup.To see
-    how to do it with ``django-river`` pleas have a
-    look at `django-river`
+    integration with ``xii-django-river`` must be done.
+    Don't worry it is with the easiest setup. To see
+    how to do it with ``xii-django-river`` please have a
+    look at `xii-django-river`_
 
 1. Install and enable it
 
    .. code:: bash
 
-       pip install river-admin
+       pip install xii-django-river-admin
 
 
    .. code:: python
@@ -41,9 +41,9 @@ Installation
 
        INSTALLED_APPS=[
            ...
-           'river',
+           'xii.django_river',
            'rest_framework.authtoken',
-           'river_admin'
+           'xii.django_river_admin',
            ...
        ]
 
@@ -52,7 +52,7 @@ Installation
                'rest_framework.authentication.BasicAuthentication',
                'rest_framework.authentication.TokenAuthentication',
            ],
-           'EXCEPTION_HANDLER': 'river_admin.views.exception_handler'
+           'EXCEPTION_HANDLER': 'xii.django_river_admin.views.exception_handler'
        }
 
 2. Do migration;
@@ -61,12 +61,14 @@ Installation
 
         python manage.py migrate
 
-3. Register ``River Admin`` urls in your app ``urls.py``
+3. Register ``xii-django-river-admin`` urls in your app ``urls.py``
 
    .. code:: python
 
+        from django.urls import include, re_path
+
         urlpatterns = [
-            url(r'^', include("river_admin.urls")),
+            re_path(r'^', include("xii.django_river_admin.urls")),
         ]
 
 4. Collect statics and make sure ``STATIC_URL`` is ``/static/`` **(FOR PRODUCTION WHERE DEBUG=False)**;
@@ -86,12 +88,12 @@ Installation
 
    .. code:: bash
 
-       http://0.0.0.0:8000/river-admin/
+       http://0.0.0.0:8000/xii-django-river-admin/
 
 Out of the Box Examples
 -----------------------
 
-``River Admin`` comes with few examples that you can
+``xii-django-river-admin`` comes with a few examples that you can
 fiddle with and find your way easier.
 
 
@@ -112,9 +114,9 @@ Enable the example app and then run your application
 
        INSTALLED_APPS=[
            ...
-           'river',
+           'xii.django_river',
            'rest_framework.authtoken',
-           'river_admin',
+           'xii.django_river_admin',
            'examples.shipping_example',
            ...
        ]
@@ -137,9 +139,9 @@ Enable the example app and then run your application
 
        INSTALLED_APPS=[
            ...
-           'river',
+           'xii.django_river',
            'rest_framework.authtoken',
-           'river_admin',
+           'xii.django_river_admin',
            'examples.issue_tracker_example',
            ...
        ]

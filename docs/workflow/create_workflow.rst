@@ -24,7 +24,7 @@ Create Workflow
 
 .. note::
     In order to see this page, your user has to have
-    ``river.add_workflow`` permission.
+    ``xii_django_river.add_workflow`` permission.
 
 Creating a workflow consist of defining its intiial state
 and the state field along with the content type and later
@@ -51,7 +51,7 @@ Initiale Worklfow
 Create Transitions
 ------------------
 
-This is the most fun part of ``River Admin``. Becuase
+This is the most fun part of ``xii-django-river-admin``. Becuase
 it provides a highly interactive one screen to create them all.
 
 .. note::

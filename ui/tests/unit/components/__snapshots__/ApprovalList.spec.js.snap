@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ApprovalList.vue should emit event on order of the approvals change 1`] = `
+exports[`ApprovalList.vue > should emit event on order of the approvals change 1`] = `
 <div
-  class="container py-4 container--fluid"
+  class="v-container v-container--fluid v-locale--is-ltr py-4"
 >
   <div
-    class="row"
+    class="v-row"
   >
     <div
-      class="col"
+      class="v-col"
     >
       No approval step
     </div>
@@ -16,15 +16,15 @@ exports[`ApprovalList.vue should emit event on order of the approvals change 1`]
 </div>
 `;
 
-exports[`ApprovalList.vue should not render any approval when the list is empty 1`] = `
+exports[`ApprovalList.vue > should not render any approval when the list is empty 1`] = `
 <div
-  class="container py-4 container--fluid"
+  class="v-container v-container--fluid v-locale--is-ltr py-4"
 >
   <div
-    class="row"
+    class="v-row"
   >
     <div
-      class="col"
+      class="v-col"
     >
       No approval step
     </div>
@@ -32,284 +32,456 @@ exports[`ApprovalList.vue should not render any approval when the list is empty 
 </div>
 `;
 
-exports[`ApprovalList.vue should render approvals when the list is with more than one item 1`] = `
+exports[`ApprovalList.vue > should render approvals when the list is with more than one item 1`] = `
 <div
-  class="container py-4 container--fluid"
+  class="v-container v-container--fluid v-locale--is-ltr py-4"
 >
   <div
-    class="row"
+    class="v-row"
   >
     <div
-      class="col"
+      class="v-col"
     >
-      <div
-        class="smooth-dnd-container vertical"
-      >
+      <div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate column-drag-handle mb-1 mr-3 mdi mdi-menu theme--light"
-                  />
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
+                  <!---->
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
                   <div
-                    class="mt-5 v-speed-dial v-speed-dial--right v-speed-dial--bottom v-speed-dial--direction-left"
-                  >
-                    <button
-                      class="v-btn v-btn--contained v-btn--fab v-btn--round theme--dark v-size--small primary"
-                      type="button"
-                    >
-                      <span
-                        class="v-btn__content"
-                      >
-                        <i
-                          aria-hidden="true"
-                          class="v-icon notranslate mdi mdi-settings theme--dark"
-                        />
-                      </span>
-                    </button>
-                    <span
-                      class="v-speed-dial__list"
-                    />
-                  </div>
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
-                  <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <i
+                  aria-hidden="true"
+                  class="mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-default column-drag-handle mb-1 mr-3"
+                />
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                
+                
+                <button
+                  class="v-btn v-btn--elevated v-theme--light bg-primary v-btn--density-default v-btn--size-default v-btn--variant-elevated"
+                  dark=""
+                  fab=""
+                  modelvalue="false"
+                  small=""
+                  type="button"
+                >
+                  
+                  <span
+                    class="v-btn__overlay"
+                  />
+                  <span
+                    class="v-btn__underlay"
+                  />
+                  
+                  <!---->
+                  <span
+                    class="v-btn__content"
+                    data-no-activator=""
+                  >
+                    
+                    
+                    <i
+                      aria-hidden="true"
+                      class="mdi-settings mdi v-icon notranslate v-theme--light v-icon--size-default"
+                    />
+                    
+                    
+                  </span>
+                  <!---->
+                  <!---->
+                </button>
+                
+                <!---->
+                
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate column-drag-handle mb-1 mr-3 mdi mdi-menu theme--light"
-                  />
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
+                  <!---->
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
                   <div
-                    class="mt-5 v-speed-dial v-speed-dial--right v-speed-dial--bottom v-speed-dial--direction-left"
-                  >
-                    <button
-                      class="v-btn v-btn--contained v-btn--fab v-btn--round theme--dark v-size--small primary"
-                      type="button"
-                    >
-                      <span
-                        class="v-btn__content"
-                      >
-                        <i
-                          aria-hidden="true"
-                          class="v-icon notranslate mdi mdi-settings theme--dark"
-                        />
-                      </span>
-                    </button>
-                    <span
-                      class="v-speed-dial__list"
-                    />
-                  </div>
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
-                  <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <i
+                  aria-hidden="true"
+                  class="mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-default column-drag-handle mb-1 mr-3"
+                />
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                
+                
+                <button
+                  class="v-btn v-btn--elevated v-theme--light bg-primary v-btn--density-default v-btn--size-default v-btn--variant-elevated"
+                  dark=""
+                  fab=""
+                  modelvalue="false"
+                  small=""
+                  type="button"
+                >
+                  
+                  <span
+                    class="v-btn__overlay"
+                  />
+                  <span
+                    class="v-btn__underlay"
+                  />
+                  
+                  <!---->
+                  <span
+                    class="v-btn__content"
+                    data-no-activator=""
+                  >
+                    
+                    
+                    <i
+                      aria-hidden="true"
+                      class="mdi-settings mdi v-icon notranslate v-theme--light v-icon--size-default"
+                    />
+                    
+                    
+                  </span>
+                  <!---->
+                  <!---->
+                </button>
+                
+                <!---->
+                
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate column-drag-handle mb-1 mr-3 mdi mdi-menu theme--light"
-                  />
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
+                  <!---->
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
                   <div
-                    class="mt-5 v-speed-dial v-speed-dial--right v-speed-dial--bottom v-speed-dial--direction-left"
-                  >
-                    <button
-                      class="v-btn v-btn--contained v-btn--fab v-btn--round theme--dark v-size--small primary"
-                      type="button"
-                    >
-                      <span
-                        class="v-btn__content"
-                      >
-                        <i
-                          aria-hidden="true"
-                          class="v-icon notranslate mdi mdi-settings theme--dark"
-                        />
-                      </span>
-                    </button>
-                    <span
-                      class="v-speed-dial__list"
-                    />
-                  </div>
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
-                  <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <i
+                  aria-hidden="true"
+                  class="mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-default column-drag-handle mb-1 mr-3"
+                />
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                
+                
+                <button
+                  class="v-btn v-btn--elevated v-theme--light bg-primary v-btn--density-default v-btn--size-default v-btn--variant-elevated"
+                  dark=""
+                  fab=""
+                  modelvalue="false"
+                  small=""
+                  type="button"
+                >
+                  
+                  <span
+                    class="v-btn__overlay"
+                  />
+                  <span
+                    class="v-btn__underlay"
+                  />
+                  
+                  <!---->
+                  <span
+                    class="v-btn__content"
+                    data-no-activator=""
+                  >
+                    
+                    
+                    <i
+                      aria-hidden="true"
+                      class="mdi-settings mdi v-icon notranslate v-theme--light v-icon--size-default"
+                    />
+                    
+                    
+                  </span>
+                  <!---->
+                  <!---->
+                </button>
+                
+                <!---->
+                
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
       </div>
@@ -318,106 +490,162 @@ exports[`ApprovalList.vue should render approvals when the list is with more tha
 </div>
 `;
 
-exports[`ApprovalList.vue should render approvals when the list is with one item 1`] = `
+exports[`ApprovalList.vue > should render approvals when the list is with one item 1`] = `
 <div
-  class="container py-4 container--fluid"
+  class="v-container v-container--fluid v-locale--is-ltr py-4"
 >
   <div
-    class="row"
+    class="v-row"
   >
     <div
-      class="col"
+      class="v-col"
     >
-      <div
-        class="smooth-dnd-container vertical"
-      >
+      <div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate column-drag-handle mb-1 mr-3 mdi mdi-menu theme--light"
-                  />
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
+                  <!---->
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
                   <div
-                    class="mt-5 v-speed-dial v-speed-dial--right v-speed-dial--bottom v-speed-dial--direction-left"
-                  >
-                    <button
-                      class="v-btn v-btn--contained v-btn--fab v-btn--round theme--dark v-size--small primary"
-                      type="button"
-                    >
-                      <span
-                        class="v-btn__content"
-                      >
-                        <i
-                          aria-hidden="true"
-                          class="v-icon notranslate mdi mdi-settings theme--dark"
-                        />
-                      </span>
-                    </button>
-                    <span
-                      class="v-speed-dial__list"
-                    />
-                  </div>
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
-                  <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <i
+                  aria-hidden="true"
+                  class="mdi-menu mdi v-icon notranslate v-theme--light v-icon--size-default column-drag-handle mb-1 mr-3"
+                />
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                
+                
+                <button
+                  class="v-btn v-btn--elevated v-theme--light bg-primary v-btn--density-default v-btn--size-default v-btn--variant-elevated"
+                  dark=""
+                  fab=""
+                  modelvalue="false"
+                  small=""
+                  type="button"
+                >
+                  
+                  <span
+                    class="v-btn__overlay"
+                  />
+                  <span
+                    class="v-btn__underlay"
+                  />
+                  
+                  <!---->
+                  <span
+                    class="v-btn__content"
+                    data-no-activator=""
+                  >
+                    
+                    
+                    <i
+                      aria-hidden="true"
+                      class="mdi-settings mdi v-icon notranslate v-theme--light v-icon--size-default"
+                    />
+                    
+                    
+                  </span>
+                  <!---->
+                  <!---->
+                </button>
+                
+                <!---->
+                
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
       </div>
@@ -426,218 +654,336 @@ exports[`ApprovalList.vue should render approvals when the list is with one item
 </div>
 `;
 
-exports[`ApprovalList.vue should update interanal items when approvals are updated 1`] = `
+exports[`ApprovalList.vue > should update interanal items when approvals are updated 1`] = `
 <div
-  class="container py-4 container--fluid"
+  class="v-container v-container--fluid v-locale--is-ltr py-4"
 >
   <div
-    class="row"
+    class="v-row"
   >
     <div
-      class="col"
+      class="v-col"
     >
-      <div
-        class="smooth-dnd-container vertical"
-      >
+      <div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
                   <!---->
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
-                  <!---->
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
                   <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <!--v-if-->
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                <!--v-if-->
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
                   <!---->
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
-                  <!---->
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
                   <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <!--v-if-->
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                <!--v-if-->
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
         <div
-          class="smooth-dnd-draggable-wrapper"
+          class="draggable-item"
+          data-draggable="true"
         >
           <div
-            class="draggable-item"
+            class="v-container v-locale--is-ltr"
           >
             <div
-              class="container"
+              class="v-card v-theme--light v-card--density-default v-card--variant-elevated"
             >
+              <!---->
               <div
-                class="v-card v-sheet theme--light"
+                class="v-card__loader"
               >
                 <div
-                  class="v-card__title"
+                  aria-hidden="true"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear v-theme--light v-locale--is-ltr"
+                  role="progressbar"
+                  style="top: 0px; height: 0px; --v-progress-linear-height: 2px;"
                 >
                   <!---->
-                   
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mb-1 mr-3 mdi mdi-account-multiple-check theme--light"
-                  />
-                   
-                  <span
-                    class="title font-weight-light"
-                  >
-                    Should be approved by the users who
-                  </span>
-                   
                   <div
-                    class="flex-grow-1"
+                    class="v-progress-linear__background"
                   />
-                   
-                  <!---->
-                </div>
-                 
-                <div
-                  class="v-card__text"
-                >
                   <div
-                    class="row"
+                    class="v-progress-linear__buffer"
+                    style="width: 0%;"
+                  />
+                  <transition-stub
+                    appear="false"
+                    css="true"
+                    name="fade-transition"
+                    persisted="false"
                   >
                     <div
-                      class="col"
+                      class="v-progress-linear__indeterminate"
                     >
-                      <!---->
-                       
-                      <!---->
-                       
+                      
                       <div
-                        class="row"
-                      >
-                        <!---->
-                      </div>
+                        class="v-progress-linear__indeterminate long"
+                      />
+                      <div
+                        class="v-progress-linear__indeterminate short"
+                      />
+                      
+                    </div>
+                  </transition-stub>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+              
+              <div
+                class="v-card-title"
+              >
+                <!--v-if-->
+                <i
+                  aria-hidden="true"
+                  class="mdi-account-multiple-check mdi v-icon notranslate v-theme--light v-icon--size-default mb-1 mr-3"
+                />
+                <span
+                  class="title font-weight-light"
+                >
+                  Should be approved by the users who
+                </span>
+                <div
+                  class="flex-grow-1"
+                />
+                <!--v-if-->
+              </div>
+              <div
+                class="v-card-text"
+              >
+                <div
+                  class="v-row"
+                >
+                  <div
+                    class="v-col"
+                  >
+                    <!--v-if-->
+                    <!--v-if-->
+                    <div
+                      class="v-row"
+                    >
+                      <!--v-if-->
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <div
-                class="v-dialog__container"
-                role="dialog"
-              >
-                <!---->
-              </div>
+              
+              <!---->
+              
+              <!---->
+              <span
+                class="v-card__underlay"
+              />
+              
             </div>
+            
+            <!---->
+            <!---->
+            
           </div>
         </div>
       </div>

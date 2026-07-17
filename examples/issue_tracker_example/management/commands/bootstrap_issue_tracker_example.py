@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from river.models import TransitionApprovalMeta
+from xii.django_river.models import TransitionApprovalMeta
 
 from examples.issue_tracker_example.models import Issue
 
@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
     @transaction.atomic()
     def handle(self, *args, **options):
-        from river.models import State, Workflow, TransitionMeta
+        from xii.django_river.models import State, Workflow, TransitionMeta
         from django.contrib.contenttypes.models import ContentType
 
         developer, _ = Group.objects.update_or_create(name="Developer")

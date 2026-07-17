@@ -1,5 +1,6 @@
-import Vuetify from 'vuetify'
-import Vue from 'vue'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 import { mount } from '@vue/test-utils'
 import { Workflow, State, Transition } from "@/models/models"
 import WorkflowIllustration from '@/components/WorkflowIllustration.vue'
@@ -8,8 +9,7 @@ describe('WorkflowIllustration.vue', () => {
     let vuetify
 
     beforeEach(() => {
-        vuetify = new Vuetify()
-        Vue.use(Vuetify)
+        vuetify = createVuetify({ components, directives })
 
         window.SVGElement.prototype.getBBox = () => ({
             x: Math.floor(Math.random() * Math.floor(100)),
@@ -75,9 +75,8 @@ describe('WorkflowIllustration.vue', () => {
 
     function mount_component(propsData) {
         return mount(WorkflowIllustration, {
-            vuetify,
-            sync: false,
-            propsData,
+            global: { plugins: [vuetify] },
+            props: propsData,
         })
     }
 })

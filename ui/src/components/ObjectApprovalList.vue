@@ -23,14 +23,12 @@
 <script>
 import { ObjectApproval } from "@/models/models";
 import ObjectApprovalDetail from "@/components/ObjectApprovalDetail.vue";
-import HookDetail from "@/components/HookDetail.vue";
 import http from "@/helpers/http";
 
 export default {
   name: "ObjectApprovalList",
   components: {
-    ObjectApprovalDetail,
-    HookDetail
+    ObjectApprovalDetail
   },
   props: ["workflow", "object_id", "object_approvals", "editable"],
   data: () => ({

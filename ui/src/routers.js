@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue'
 import ListWorkflowPage from '@/pages/workflow/ListWorkflowPage.vue'
 import CreateWorkflowPage from '@/pages/workflow/CreateWorkflowPage.vue'
@@ -11,16 +11,16 @@ import EditCallbackFunctionPage from '@/pages/callbackfunction/EditCallbackFunct
 import ListWorkflowObjectsPage from '@/pages/workflow_object/ListWorkflowObjectsPage.vue'
 import EditWorkflowObjectTimelinePage from '@/pages/workflow_object/EditWorkflowObjectTimelinePage.vue'
 import ListStatePage from '@/pages/state/ListStatePage.vue'
-import Vue from 'vue'
 import store from '@/store'
 import { auth, WORKFLOW } from '@/helpers/auth'
 import { emit_error, emit_logout } from '@/helpers/event_bus'
 
 store.commit('initialiseStore')
 
-Vue.use(VueRouter);
-
-var router = new VueRouter({
+// Served embedded inside Django, mounted from an arbitrary sub-path, so
+// hash-based history is used to avoid depending on server-side routing.
+const router = createRouter({
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/login',

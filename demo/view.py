@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 
 # Create your views here.
-from river.models import State
+from xii.django_river.models import State
 
 from examples.issue_tracker_example.models import Issue
 from examples.shipping_example.models import Shipping

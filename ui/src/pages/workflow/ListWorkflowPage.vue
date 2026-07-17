@@ -16,7 +16,7 @@
       </EmptyState>
     </v-container>
     <v-container v-else fluid>
-      <v-flex>
+      <v-col>
         <v-alert
           type="success"
           class="transition-swing"
@@ -24,7 +24,7 @@
           v-model="messageAlert"
           v-if="message"
         >{{message}}</v-alert>
-      </v-flex>
+      </v-col>
       <v-row justify="center" align="center">
         <v-col justify="center" align="center">
           <h1>
@@ -69,20 +69,20 @@
 
                 <v-card-actions>
                   <div class="flex-grow-1" />
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-btn icon color="primary" v-on="on" @click="goToViewWorkflowPage(item.id)">
+                  <v-tooltip location="top">
+                    <template v-slot:activator="{ props }">
+                      <v-btn icon color="primary" v-bind="props" @click="goToViewWorkflowPage(item.id)">
                         <v-icon>mdi-details</v-icon>
                       </v-btn>
                     </template>
                     <span>View Workflow</span>
                   </v-tooltip>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
+                  <v-tooltip location="top">
+                    <template v-slot:activator="{ props }">
                       <v-btn
                         icon
                         color="primary"
-                        v-on="on"
+                        v-bind="props"
                         @click="goToEditWorkflowPage(item.id)"
                         :disabled="!has_change_workflow_permission"
                       >
@@ -91,12 +91,12 @@
                     </template>
                     <span>Edit Workflow</span>
                   </v-tooltip>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
+                  <v-tooltip location="top">
+                    <template v-slot:activator="{ props }">
                       <v-btn
                         icon
                         color="primary"
-                        v-on="on"
+                        v-bind="props"
                         @click="goToEditWorkflowRulePage(item.id)"
                         :disabled="!has_change_workflow_permission"
                       >
@@ -105,12 +105,12 @@
                     </template>
                     <span>Edit Workflow Rules</span>
                   </v-tooltip>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
+                  <v-tooltip location="top">
+                    <template v-slot:activator="{ props }">
                       <v-btn
                         icon
                         color="warning"
-                        v-on="on"
+                        v-bind="props"
                         @click="showDeletingDialog(item)"
                         :disabled="!has_delete_workflow_permission"
                       >

@@ -6,7 +6,7 @@ User = get_user_model()
 
 from django.db import models
 from django.db.models import SET_NULL
-from river.models.fields.state import StateField
+from xii.django_river.models.fields.state import StateField
 
 
 class Issue(models.Model):

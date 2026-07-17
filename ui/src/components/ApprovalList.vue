@@ -5,14 +5,15 @@
     </v-row>
     <v-row v-else>
       <v-col>
-        <Container
-          group-name="column"
-          @drop="on_drop($event)"
-          drag-handle-selector=".column-drag-handle"
+        <draggable
+          v-model="items"
+          item-key="id"
+          handle=".column-drag-handle"
+          ghost-class="opacity-ghost-drop"
           drag-class="opacity-ghost"
-          drop-class="opacity-ghost-drop"
+          @end="on_move"
         >
-          <Draggable v-for="(element) in items" :key="element.priority">
+          <template #item="{ element }">
             <div class="draggable-item">
               <ApprovalDetail
                 :workflow="workflow"
@@ -23,8 +24,8 @@
                 @on-hook-delete="(hook)=>on_hook_deleted(hook)"
               />
             </div>
-          </Draggable>
-        </Container>
+          </template>
+        </draggable>
       </v-col>
     </v-row>
   </v-container>
@@ -33,17 +34,14 @@
 <script>
 import { Approval } from "@/models/models";
 import ApprovalDetail from "@/components/ApprovalDetail.vue";
-import HookDetail from "@/components/HookDetail.vue";
 import http from "@/helpers/http";
-import { Container, Draggable } from "vue-smooth-dnd";
+import draggable from "vuedraggable";
 
 export default {
   name: "ApprovalList",
   components: {
     ApprovalDetail,
-    HookDetail,
-    Container,
-    Draggable
+    draggable
   },
   props: ["workflow", "approvals", "editable"],
   data: () => ({
@@ -92,30 +90,6 @@ export default {
     },
     on_hook_deleted(hook) {
       this.$emit("on-hook-delete", hook);
-    },
-    on_drop(dropResult) {
-      this.items = this.apply_drag(this.items, dropResult).map((approval, index) => ({
-        ...approval,
-        priority: index + 1
-      }));
-      this.$emit("on-order-change", this.items);
-    },
-    apply_drag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult;
-      if (removedIndex === null && addedIndex === null) return arr;
-
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-
-      return result;
     }
   }
 };
@@ -139,7 +113,6 @@ export default {
 .opacity-ghost {
   transition: all 0.25s ease;
   opacity: 0.8;
-  /* transform: rotateZ(5deg); */
   background-color: cornflowerblue;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.3);
   transform: rotateZ(5deg);
@@ -147,7 +120,6 @@ export default {
 
 .opacity-ghost-drop {
   opacity: 1;
-  /* transform: rotateZ(0deg); */
   background-color: white;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0);
 }

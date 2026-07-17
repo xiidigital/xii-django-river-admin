@@ -14,8 +14,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'river',
-    'river_admin',
+    'xii.django_river',
+    'xii.django_river_admin',
     'examples.issue_tracker_example',
     'examples.shipping_example',
     'demo'
@@ -37,7 +37,23 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
-    'EXCEPTION_HANDLER': 'river_admin.views.exception_handler'
+    # Without this, every endpoint defaulted to AllowAny - an unauthenticated
+    # caller could hit e.g. /function/list/ and read every stored Function
+    # body (arbitrary sandboxed Python source) with no token at all. Each
+    # view still layers its own permission=/permission_classes= on top of
+    # this where it needs more than "just logged in" (see
+    # xii/django_river_admin/views/__init__.py).
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    # Only the 'login' scope is used (xii.django_river_admin.views.auth_view.
+    # LoginRateThrottle, applied to /api-token-auth/) - deliberately not
+    # rate-limiting the rest of the API here, since every other endpoint
+    # already requires IsAuthenticated above.
+    'DEFAULT_THROTTLE_RATES': {
+        'login': '10/min',
+    },
+    'EXCEPTION_HANDLER': 'xii.django_river_admin.views.exception_handler'
 }
 
 TEMPLATES = [
@@ -54,14 +70,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
-class DisableMigrations(object):
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        return None
 
 
 SITE_ID = 1
@@ -88,7 +96,7 @@ LOGGING = {
 
     },
     'loggers': {
-        'river': {
+        'xii.django_river': {
             'handlers': ['console'],
             'level': 'DEBUG'
         }

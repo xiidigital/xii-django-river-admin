@@ -40,7 +40,7 @@ Authorizations
 
 Thanks to ``django-river`` because it supports flexibility to manage
 workflow components on the fly meaning that the changes can be applied
-without a code change or a deployment. ``River Admin`` is extending this
+without a code change or a deployment. ``xii-django-river-admin`` is extending this
 capability and providing a user friendly, easy to use screens to do that on top
 of ``django-river``. One of these screens is managing the authorization
 rules of the transitions.
@@ -51,8 +51,8 @@ How to Navigate
 ---------------
 
 .. note::
-    In order to see this page, your user has to have ``river.view_workflow``
-    together with ``river.change_workflow`` permissions.
+    In order to see this page, your user has to have ``xii_django_river.view_workflow``
+    together with ``xii_django_river.change_workflow`` permissions.
 
 In order to go to that screen you can either be navigated from the home screen
 by clicking the "Edit Workflow Rules" button;
@@ -70,7 +70,7 @@ button;
 Add Authorization Rule
 ----------------------
 
-``River Admin`` provides a graphical interface that illustrates states
+``xii-django-river-admin`` provides a graphical interface that illustrates states
 and transitions in the workflow which you have already seen while
 creating the workflow. Same component exists here but with more capability.
 That extra capability you have here is to be able to click transitions which
@@ -159,7 +159,7 @@ are in the ``Delivery Manager`` group.
 Reprioritizition
 ~~~~~~~~~~~~~~~~
 
-One of the most convinient improvement with ``River Admin`` on top of
+One of the most convinient improvement with ``xii-django-river-admin`` on top of
 ``django-river`` is changing the order of the chain by just a drag
 and drop.
 

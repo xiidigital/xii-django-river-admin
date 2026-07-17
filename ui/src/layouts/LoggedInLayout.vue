@@ -7,15 +7,15 @@
             <img class="mt-2 toolbar-logo" src="@/assets/logo.svg" />
           </v-col>
           <v-col>
-            <span class="app-title">River Admin</span>
+            <span class="app-title">xii-django-river-admin</span>
           </v-col>
         </v-row>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
 
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-icon class="mr-2" v-on="on">mdi-account</v-icon>
+      <v-tooltip location="bottom">
+        <template v-slot:activator="{ props }">
+          <v-icon class="mr-2" v-bind="props">mdi-account</v-icon>
         </template>
         <span>{{ user_profile.username }}</span>
       </v-tooltip>
@@ -24,16 +24,15 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container align="start" justify="start" class="pa-0" fluid>
         <v-row no-gutters align="start" justify="start">
           <v-col xl="auto" lg="auto" md="auto" sm="auto" xs="auto">
             <div :class="mini?'mini-drawer-shadow':'drawer-shadow'" />
             <v-navigation-drawer
               v-model="drawer"
-              :mini-variant="mini"
+              :rail="mini"
               permanent
-              fixed
               class="drawer"
             >
               <v-list-item jusitfy="center" align="center">
@@ -42,42 +41,32 @@
 
               <v-divider />
 
-              <v-list dense>
+              <v-list density="compact">
                 <v-list-item
                   :disabled="item.disabled"
                   :id="item.id"
                   v-for="item in items"
                   :key="item.title"
                   @click="goTo(item)"
+                  :prepend-icon="item.icon"
+                  :title="item.title"
                   link
                 >
-                  <v-list-item-icon>
-                    <v-icon :disabled="item.disabled">{{ item.icon }}</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
                 </v-list-item>
               </v-list>
 
               <v-divider />
 
-              <v-list dense>
+              <v-list density="compact">
                 <v-list-item
                   :id="item.id"
                   v-for="item in workflow_items"
                   :key="item.title"
                   @click="goTo(item)"
+                  :prepend-icon="item.icon"
+                  :title="item.title"
                   link
                 >
-                  <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
                 </v-list-item>
               </v-list>
               <v-divider />
@@ -100,7 +89,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -132,7 +121,7 @@ export default {
 
       var workflow_fetchers = auth.has_view_permission(WORKFLOW, yes => {
         if (yes) {
-          return http.get("/workflow/metadata", response => {
+          return http.get("/workflow/metadata/", response => {
             this.workflow_items = response.data.map(workflow_metadata => ({
               id: workflow_metadata.id,
               title: workflow_metadata.name,

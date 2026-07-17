@@ -10,7 +10,7 @@
     <v-row justify="center" align="center">
       <v-col>
         <v-data-table :headers="headers" :items="items" :items-per-page="10" class="elevation-1">
-          <template v-slot:item.action="{ item }">
+          <template v-slot:[`item.action`]="{ item }">
             <v-icon
               class="mr-1"
               color="warning"
@@ -26,7 +26,7 @@
         <v-card-title class="headline">
           Delete state
           <v-chip color="primary" class="white--text">
-            <v-icon left>mdi-label-variant</v-icon>
+            <v-icon start>mdi-label-variant</v-icon>
             {{ deletingState.label }}
           </v-chip>?
         </v-card-title>
@@ -53,9 +53,9 @@ export default {
     deletingState: null,
     deleteDialog: false,
     headers: [
-      { text: "Slug", value: "slug", align: "left" },
-      { text: "Label", value: "label", align: "left" },
-      { text: "Actions", value: "action", sortable: false }
+      { title: "Slug", key: "slug", align: "start" },
+      { title: "Label", key: "label", align: "start" },
+      { title: "Actions", key: "action", sortable: false }
     ],
     items: [],
     has_delete_state_permission: false

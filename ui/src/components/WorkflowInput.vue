@@ -3,9 +3,9 @@
     v-model="model"
     :items="items"
     :loading="loading"
-    :search-input.sync="search"
+    v-model:search="search"
     hide-selected
-    item-text="identifier"
+    item-title="identifier"
     label="Search for a workflow..."
     clearable
     return-object
@@ -18,11 +18,9 @@
         </v-list-item-title>
       </v-list-item>
     </template>
-    <template v-slot:selection="{ attr, on, item, selected }">{{ item.identifier }}</template>
-    <template v-slot:item="{ item }">
-      <v-list-item-content>
-        <v-list-item-title v-text="item.identifier"></v-list-item-title>
-      </v-list-item-content>
+    <template v-slot:selection="{ item }">{{ item.raw.identifier }}</template>
+    <template v-slot:item="{ item, props }">
+      <v-list-item v-bind="props" :title="item.raw.identifier"></v-list-item>
     </template>
   </v-autocomplete>
 </template>

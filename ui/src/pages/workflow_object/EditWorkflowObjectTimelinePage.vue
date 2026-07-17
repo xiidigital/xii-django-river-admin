@@ -8,7 +8,7 @@
         </h1>
       </v-row>
       <v-row>
-        <v-flex xs12 sm12 md6>
+        <v-col cols="12" sm="12" md="6">
           <v-container>
             <WorkflowIllustration
               :states="states"
@@ -18,8 +18,8 @@
               @on-transition-selected="on_transition_selected"
             />
           </v-container>
-        </v-flex>
-        <v-flex xs12 sm12 md6>
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
           <v-container v-if="selected_transition && !selected_transition.is_cancelled">
             <v-row>
               <v-col>
@@ -41,8 +41,7 @@
                       <v-col v-if="!selected_transition.is_done && !readonly">
                         <v-speed-dial
                           v-model="fab"
-                          :bottom="true"
-                          :right="true"
+                          location="bottom end"
                           direction="left"
                           :open-on-hover="true"
                         >
@@ -53,13 +52,13 @@
                             </v-btn>
                           </template>
 
-                          <v-tooltip top>
-                            <template v-slot:activator="{ on }">
+                          <v-tooltip location="top">
+                            <template v-slot:activator="{ props }">
                               <v-btn
                                 fab
                                 dark
                                 small
-                                v-on="on"
+                                v-bind="props"
                                 color="green"
                                 @click="newTransitionHookDialog=true"
                               >
@@ -106,7 +105,7 @@
               <template v-slot:icon>mdi-mouse</template>
             </EmptyState>
           </v-container>
-        </v-flex>
+        </v-col>
       </v-row>
     </v-container>
 
@@ -156,10 +155,11 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 import EmptyState from "@/components/EmptyState.vue";
 import CreateTransitionHookForm from "@/components/CreateTransitionHookForm.vue";
 import HookDetail from "@/components/HookDetail.vue";
-import WorkflowIllustration from "@/components/WorkflowIllustration.vue";
+const WorkflowIllustration = defineAsyncComponent(() => import("@/components/WorkflowIllustration.vue"));
 import ObjectApprovalList from "@/components/ObjectApprovalList.vue";
 import { emit_success } from "@/helpers/event_bus";
 import http from "@/helpers/http";
@@ -425,7 +425,7 @@ export default {
       if (this.selected_transition) {
         var approval = this.selected_transition.approvals.find(approval => approval.id == this.deletingApprovalHook.transition_approval_id);
         if (approval) {
-          http.delete(`/approval-hook/delete/${this.deletingApprovalHook.id}`, response => {
+          http.delete(`/approval-hook/delete/${this.deletingApprovalHook.id}/`, response => {
             approval.hooks = approval.hooks.filter(hook => hook.id != this.deletingApprovalHook.id);
             this._update_approval(this.selected_transition, approval);
             this._update_transition(this.selected_transition);

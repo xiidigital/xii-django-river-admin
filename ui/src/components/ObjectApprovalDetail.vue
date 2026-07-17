@@ -4,7 +4,7 @@
       <v-card-title class="approved" v-if="approval.status=='approved'">
         <span class="title font-weight-light">Approved by &nbsp;</span>
         <v-chip class="black--text">
-          <v-icon left>mdi-account</v-icon>
+          <v-icon start>mdi-account</v-icon>
           <span v-text="approval.transactioner.username"></span>
         </v-chip>
       </v-card-title>
@@ -17,8 +17,7 @@
           v-if="editable"
           class="mt-5"
           v-model="fab"
-          :bottom="true"
-          :right="true"
+          location="bottom end"
           direction="left"
           :open-on-hover="true"
         >
@@ -29,9 +28,9 @@
             </v-btn>
           </template>
 
-          <v-tooltip top>
-            <template v-slot:activator="{ on }">
-              <v-btn fab dark small v-on="on" color="green" @click="newHookDialog=true">
+          <v-tooltip location="top">
+            <template v-slot:activator="{ props }">
+              <v-btn fab dark small v-bind="props" color="green" @click="newHookDialog=true">
                 <v-icon>mdi-function-variant</v-icon>
               </v-btn>
             </template>
@@ -57,7 +56,7 @@
               <v-col>
                 <span v-bind:key="permission.id" v-for="(permission,index) in approval.permissions">
                   <v-chip color="primary" class="white--text">
-                    <v-icon left>mdi-lock</v-icon>
+                    <v-icon start>mdi-lock</v-icon>
                     <span v-text="permission.identifier"></span>
                   </v-chip>
                   <span v-if="index != approval.permissions.length-1">or</span>
@@ -71,7 +70,7 @@
               <v-col>
                 <span v-bind:key="group.id" v-for="(group,index) in approval.groups">
                   <v-chip color="primary" class="white--text">
-                    <v-icon left>mdi-account-multiple</v-icon>
+                    <v-icon start>mdi-account-multiple</v-icon>
                     <span v-text="group.name"></span>
                   </v-chip>
                   <span v-if="index != approval.groups.length-1">or</span>

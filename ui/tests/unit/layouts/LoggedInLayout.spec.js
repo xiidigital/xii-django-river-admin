@@ -1,6 +1,7 @@
-
-import Vuetify from 'vuetify'
-import Vue from 'vue'
+import { describe, it, beforeEach, expect, vi } from 'vitest'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 import { auth, WORKFLOW, STATE, VIEW, FUNCTION } from "@/helpers/auth"
 import http from "@/helpers/http"
 import { shallowMount } from '@vue/test-utils'
@@ -10,24 +11,22 @@ describe('LoggedInLayout.vue', () => {
     let vuetify
 
     beforeEach(() => {
-        vuetify = new Vuetify()
-        Vue.use(Vuetify)
+        vuetify = createVuetify({ components, directives })
     })
     it('Should render workflow list on the left panel if the user is authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve((operation == VIEW && object_type == WORKFLOW) ? callback(true) : callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -44,20 +43,19 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render workflow list as disabled on the left panel if the user is not authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve(callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -74,20 +72,19 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render state list on the left panel if the user is authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve((operation == VIEW && object_type == STATE) ? callback(true) : callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -104,20 +101,19 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render state list as disabled on the left panel if the user is not authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve(callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -134,20 +130,19 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render function list on the left panel if the user is authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve((operation == VIEW && object_type == FUNCTION) ? callback(true) : callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -163,20 +158,19 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render state list as disabled on the left panel if the user is not authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve(callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -193,22 +187,21 @@ describe('LoggedInLayout.vue', () => {
     })
 
     it('Should render workflow object list on the left panel if the user is authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve((operation == VIEW && object_type == WORKFLOW) ? callback(true) : callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) :
-                    ((url == "/workflow/metadata") ? callback({ data: [{ id: 1, name: "Transportation Flow", icon: "mdi-truck" }] })
+                    ((url == "/workflow/metadata/") ? callback({ data: [{ id: 1, name: "Transportation Flow", icon: "mdi-truck" }] })
                         : callback({ data: [] }))))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 
@@ -226,20 +219,19 @@ describe('LoggedInLayout.vue', () => {
 
 
     it('Should not render state list on the left panel if the user is not authorized', async () => {
-        var has_permission_spy = jest.spyOn(auth, "_has_permission").mockImplementation(
+        var has_permission_spy = vi.spyOn(auth, "_has_permission").mockImplementation(
             (operation, object_type, callback) =>
                 (Promise.resolve(callback(false)))
         )
 
-        var workflows_spy = jest.spyOn(http, "get").mockImplementation(
+        var workflows_spy = vi.spyOn(http, "get").mockImplementation(
             (url, callback) =>
                 (Promise.resolve((url == "/user/get/") ? callback({ data: { username: "testuser" } }) : callback({ data: [] })))
         );
 
 
         const wrapper = shallowMount(LoggedInLayout, {
-            vuetify,
-            sync: false,
+            global: { plugins: [vuetify] },
         })
 
 

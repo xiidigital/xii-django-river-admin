@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-flex xs12 sm12 md6>
+        <v-col cols="12" sm="12" md="6">
           <v-container>
             <WorkflowIllustration
               :states="states"
@@ -19,8 +19,8 @@
               @on-transition-selected="on_transition_selected"
             />
           </v-container>
-        </v-flex>
-        <v-flex xs12 sm12 md6>
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
           <v-container v-if="selected_transition">
             <v-row>
               <v-col>
@@ -42,8 +42,7 @@
                       <v-col v-if="!readonly">
                         <v-speed-dial
                           v-model="fab"
-                          :bottom="true"
-                          :right="true"
+                          location="bottom end"
                           direction="left"
                           :open-on-hover="true"
                         >
@@ -54,13 +53,13 @@
                             </v-btn>
                           </template>
 
-                          <v-tooltip top>
-                            <template v-slot:activator="{ on }">
+                          <v-tooltip location="top">
+                            <template v-slot:activator="{ props }">
                               <v-btn
                                 fab
                                 dark
                                 small
-                                v-on="on"
+                                v-bind="props"
                                 color="green"
                                 @click="newTransitionHookDialog=true"
                               >
@@ -70,13 +69,13 @@
                             <span>Create Transition Hook</span>
                           </v-tooltip>
 
-                          <v-tooltip top>
-                            <template v-slot:activator="{ on }">
+                          <v-tooltip location="top">
+                            <template v-slot:activator="{ props }">
                               <v-btn
                                 fab
                                 dark
                                 small
-                                v-on="on"
+                                v-bind="props"
                                 color="green"
                                 @click="newApprovalDialog=true"
                               >
@@ -102,7 +101,7 @@
                     <div v-if="selected_transition.hooks.length>0">
                       <v-divider />
                       <span class="title font-weight-light">Right before the transition happens</span>
-                      <div v-for="(hook,index) in selected_transition.hooks" :key="hook.id">
+                      <div v-for="hook in selected_transition.hooks" :key="hook.id">
                         <HookDetail
                           :hook="hook"
                           :editable="!readonly"
@@ -123,7 +122,7 @@
               <template v-slot:icon>mdi-mouse</template>
             </EmptyState>
           </v-container>
-        </v-flex>
+        </v-col>
       </v-row>
     </v-container>
     <v-dialog v-model="newApprovalDialog" max-width="800" v-if="!readonly && selected_transition">
@@ -149,11 +148,12 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 import EmptyState from "@/components/EmptyState.vue";
 import CreateApprovalForm from "@/components/CreateApprovalForm.vue";
 import CreateTransitionHookForm from "@/components/CreateTransitionHookForm.vue";
 import HookDetail from "@/components/HookDetail.vue";
-import WorkflowIllustration from "@/components/WorkflowIllustration.vue";
+const WorkflowIllustration = defineAsyncComponent(() => import("@/components/WorkflowIllustration.vue"));
 import ApprovalList from "@/components/ApprovalList.vue";
 import { emit_success } from "@/helpers/event_bus";
 import http from "@/helpers/http";

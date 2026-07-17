@@ -23,9 +23,21 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'codemirror2',
-    'river',
-    'river_admin',
+    'xii.django_river',
+    'xii.django_river_admin',
+    # Only needed for xii.django_river_admin.tests.models.WorkflowObjectTestModel,
+    # a stand-in "workflow object" model for test__workflow_object_view.py -
+    # workflow_object_view.py operates on whatever arbitrary model a
+    # Workflow's content_type points at. This deliberately uses a plain
+    # ForeignKey(State) rather than river's StateField: StateField
+    # unconditionally registers its model into the global, process-wide
+    # workflow_registry (xii.django_river.models.fields.state.StateField.
+    # contribute_to_class), which would silently change the results of
+    # test__workflow_view.py's "list available state fields" tests (they
+    # assert exact counts, assuming no other StateField model exists in the
+    # process). A plain FK behaves identically for what these tests need
+    # (getattr(obj, field_name) returning a State) without that side effect.
+    'xii.django_river_admin.tests',
 )
 
 MIDDLEWARE = [
@@ -44,7 +56,22 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
-    'EXCEPTION_HANDLER': 'river_admin.views.exception_handler'
+    # Without this, every endpoint defaulted to AllowAny - an unauthenticated
+    # caller could hit e.g. /function/list/ and read every stored Function
+    # body (arbitrary sandboxed Python source) with no token at all. Each
+    # view still layers its own permission=/permission_classes= on top of
+    # this where it needs more than "just logged in" (see views/__init__.py).
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    # Only the 'login' scope is used (xii.django_river_admin.views.auth_view.
+    # LoginRateThrottle, applied to /api-token-auth/) - deliberately not
+    # rate-limiting the rest of the API here, since every other endpoint
+    # already requires IsAuthenticated above.
+    'DEFAULT_THROTTLE_RATES': {
+        'login': '10/min',
+    },
+    'EXCEPTION_HANDLER': 'xii.django_river_admin.views.exception_handler'
 }
 
 TEMPLATES = [
@@ -65,14 +92,6 @@ TEMPLATES = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_URL = '/static/'
-
-
-class DisableMigrations(object):
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        return None
 
 
 SITE_ID = 1
@@ -99,7 +118,7 @@ LOGGING = {
 
     },
     'loggers': {
-        'river': {
+        'xii.django_river': {
             'handlers': ['console'],
             'level': 'DEBUG'
         }

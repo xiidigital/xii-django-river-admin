@@ -1,5 +1,5 @@
 from django.db import models
-from river.models.fields.state import StateField
+from xii.django_river.models.fields.state import StateField
 
 
 class Shipping(models.Model):

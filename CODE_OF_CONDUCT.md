@@ -55,7 +55,9 @@ further defined and clarified by project maintainers.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at ceahmetdal@gmail.com. All
+reported by opening a private issue with the maintainers at
+https://github.com/xiidigital/xii-django-river-admin (or, for XII Digital
+staff, through internal channels). All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an incident.

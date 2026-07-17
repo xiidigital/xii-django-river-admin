@@ -10,7 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from faker import Faker
-from river.models import Workflow, State, Function
+from xii.django_river.models import Workflow, State, Function
 
 from examples.issue_tracker_example.management.commands.bootstrap_issue_tracker_example import IN_PROGRESS, RESOLVED, CLOSED as ISSUE_CLOSED, RE_OPENED
 from examples.issue_tracker_example.models import Issue

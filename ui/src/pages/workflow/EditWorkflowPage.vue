@@ -52,7 +52,8 @@
 </template>
 
 <script>
-import WorkflowIllustration from "@/components/WorkflowIllustration.vue";
+import { defineAsyncComponent } from "vue";
+const WorkflowIllustration = defineAsyncComponent(() => import("@/components/WorkflowIllustration.vue"));
 import StateInput from "@/components/StateInput.vue";
 import { Workflow, Approval, Transition, State } from "@/models/models";
 import { emit_success } from "@/helpers/event_bus";

@@ -18,10 +18,10 @@ List Workflows
 ==============
 
 .. note::
-    In order to see this page, your user has to have ``river.view_workflow``
-    or ``river.change_workflow`` in older version of ``Django``.
+    In order to see this page, your user has to have ``xii_django_river.view_workflow``
+    or ``xii_django_river.change_workflow`` in older version of ``Django``.
 
-``Home`` page of ``River Admin`` is also listing workflow page.
+``Home`` page of ``xii-django-river-admin`` is also listing workflow page.
 If you are home for the first time meaning that you haven't had
 any workflow before, this page won't have any workflow to list.
 But once you have your first workflow you will start seeing them.

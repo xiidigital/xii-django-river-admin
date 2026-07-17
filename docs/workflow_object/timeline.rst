@@ -32,7 +32,7 @@ instance of the the same lifecycle. The transitions,
 authorization rules and hooks are created out of the workflow
 specification once and special to the workflow object itself.
 
-``River Admin`` is showing the timeline of one workflow object
+``xii-django-river-admin`` is showing the timeline of one workflow object
 that is consist of states, transitions, authorizations and hooks
 that scattered around in one useful user interface. On this page
 you can see what has happened so far along with what will possibly

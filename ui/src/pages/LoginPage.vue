@@ -1,11 +1,11 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container class="fill-height" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="4">
           <v-card class="elevation-12" pa-5>
             <v-toolbar color="primary" dark flat>
-              <v-toolbar-title>River Admin</v-toolbar-title>
+              <v-toolbar-title>xii-django-river-admin</v-toolbar-title>
               <div class="flex-grow-1"></div>
             </v-toolbar>
             <v-card-text>
@@ -36,7 +36,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -73,7 +73,11 @@ export default {
           });
         })
         .catch(err => {
-          emit_error(["Authentication failed with given credentials!"], 10000);
+          if (err.response && err.response.status === 429) {
+            emit_error(["Too many login attempts. Please wait a moment and try again."], 10000);
+          } else {
+            emit_error(["Authentication failed with given credentials!"], 10000);
+          }
         });
     }
   }

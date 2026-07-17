@@ -10,7 +10,7 @@
     <v-row justify="center" align="center">
       <v-col>
         <v-data-table :headers="headers" :items="items" :items-per-page="10" class="elevation-1">
-          <template v-slot:item.action="{ item }">
+          <template v-slot:[`item.action`]="{ item }">
             <v-icon class="mr-1" color="primary" @click="goToViewFunctionPage(item.id)">mdi-details</v-icon>
             <v-icon
               class="mr-1"
@@ -38,7 +38,7 @@
         <v-card-title class="headline">
           Delete function
           <v-chip color="primary" class="white--text">
-            <v-icon left>mdi-function-variant</v-icon>
+            <v-icon start>mdi-function-variant</v-icon>
             {{ deletingFunction.name }}
           </v-chip>?
         </v-card-title>
@@ -65,11 +65,11 @@ export default {
     deletingFunction: null,
     deleteDialog: false,
     headers: [
-      { text: "Name", value: "name", align: "left" },
-      { text: "Version", value: "version", align: "left" },
-      { text: "Created At", value: "date_created", align: "left" },
-      { text: "Last Updated At", value: "date_updated", align: "left" },
-      { text: "Actions", value: "action", sortable: false }
+      { title: "Name", key: "name", align: "start" },
+      { title: "Version", key: "version", align: "start" },
+      { title: "Created At", key: "date_created", align: "start" },
+      { title: "Last Updated At", key: "date_updated", align: "start" },
+      { title: "Actions", key: "action", sortable: false }
     ],
     items: [],
     has_add_function_permission: false,

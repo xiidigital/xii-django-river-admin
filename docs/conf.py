@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'River Admin'
-copyright = '2019, Ahmet Dal'
-author = 'Ahmet Dal'
+project = 'xii-django-river-admin'
+copyright = '2026, XII Digital & Contributors'
+author = 'XII Digital & Contributors'
 
 # The short X.Y version
-version = '0.7.0'
+version = '0.8.0'
 # The full version, including alpha/beta/rc tags
-release = '0.7.0'
+release = '0.8.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -109,7 +109,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RiverAdmindoc'
+htmlhelp_basename = 'XiiDjangoRiverAdmindoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -136,8 +136,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'RiverAdmin.tex', 'River Admin Documentation',
-     'Ahmet Dal', 'manual'),
+    (master_doc, 'XiiDjangoRiverAdmin.tex', 'xii-django-river-admin Documentation',
+     author, 'manual'),
 ]
 
 
@@ -146,7 +146,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'riveradmin', 'River Admin Documentation',
+    (master_doc, 'xiidjangoriveradmin', 'xii-django-river-admin Documentation',
      [author], 1)
 ]
 
@@ -157,8 +157,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'RiverAdmin', 'River Admin Documentation',
-     author, 'RiverAdmin', 'One line description of project.',
+    (master_doc, 'XiiDjangoRiverAdmin', 'xii-django-river-admin Documentation',
+     author, 'XiiDjangoRiverAdmin', 'Administration UI for xii-django-river.',
      'Miscellaneous'),
 ]
 

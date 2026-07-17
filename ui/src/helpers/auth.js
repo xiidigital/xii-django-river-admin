@@ -6,6 +6,7 @@ export const ADD = "add"
 export const CHANGE = "change"
 export const DELETE = "delete"
 export const VIEW = "view"
+export const APPROVE = "approve"
 
 export const WORKFLOW = "workflow"
 export const STATE = "state"
@@ -22,7 +23,7 @@ export const TRANSITION_APPROVAL = "transitionapproval"
 class Auth {
 
     _has_permission(operation, object_type, callback) {
-        return http.get(`/user/has_river_permission/${operation}/${object_type}`, response => {
+        return http.get(`/user/has_river_permission/${operation}/${object_type}/`, response => {
             if (response.data) {
                 callback(true)
             } else {
@@ -45,6 +46,10 @@ class Auth {
 
     has_view_permission(object_type, callback) {
         return this._has_permission(VIEW, object_type, callback)
+    }
+
+    has_approve_permission(object_type, callback) {
+        return this._has_permission(APPROVE, object_type, callback)
     }
 }
 

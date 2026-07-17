@@ -9,9 +9,9 @@
               v-model="selected_permissions"
               :items="permissions"
               :loading="permissions_loading"
-              :search-input.sync="search_permissions"
+              v-model:search="search_permissions"
               hide-selected
-              item-text="identifier"
+              item-title="identifier"
               label="Search permissions"
               clearable
               chips
@@ -26,22 +26,18 @@
                   </v-list-item-title>
                 </v-list-item>
               </template>
-              <template v-slot:selection="{ attr, on, item, selected }">
+              <template v-slot:chip="{ props, item }">
                 <v-chip
-                  v-bind="attr"
-                  :input-value="selected"
+                  v-bind="props"
                   color="primary"
                   class="white--text"
-                  v-on="on"
                 >
-                  <v-icon left>mdi-lock</v-icon>
-                  <span v-text="item.identifier"></span>
+                  <v-icon start>mdi-lock</v-icon>
+                  <span v-text="item.raw.identifier"></span>
                 </v-chip>
               </template>
-              <template v-slot:item="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.identifier"></v-list-item-title>
-                </v-list-item-content>
+              <template v-slot:item="{ item, props }">
+                <v-list-item v-bind="props" :title="item.raw.identifier"></v-list-item>
               </template>
             </v-autocomplete>
           </v-col>
@@ -53,9 +49,9 @@
               v-model="selected_groups"
               :items="groups"
               :loading="groups_loading"
-              :search-input.sync="search_groups"
+              v-model:search="search_groups"
               hide-selected
-              item-text="name"
+              item-title="name"
               label="Search groups"
               clearable
               chips
@@ -70,22 +66,18 @@
                   </v-list-item-title>
                 </v-list-item>
               </template>
-              <template v-slot:selection="{ attr, on, item, selected }">
+              <template v-slot:chip="{ props, item }">
                 <v-chip
-                  v-bind="attr"
-                  :input-value="selected"
+                  v-bind="props"
                   color="primary"
                   class="white--text"
-                  v-on="on"
                 >
-                  <v-icon left>mdi-account-multiple</v-icon>
-                  <span v-text="item.name"></span>
+                  <v-icon start>mdi-account-multiple</v-icon>
+                  <span v-text="item.raw.name"></span>
                 </v-chip>
               </template>
-              <template v-slot:item="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.name"></v-list-item-title>
-                </v-list-item-content>
+              <template v-slot:item="{ item, props }">
+                <v-list-item v-bind="props" :title="item.raw.name"></v-list-item>
               </template>
             </v-autocomplete>
           </v-col>

@@ -1,21 +1,11 @@
-.. |Build Status| image:: https://travis-ci.com/javrasya/river-admin.svg?branch=master
-    :target: https://travis-ci.com/javrasya/river-admin
+.. |Build Status| image:: https://github.com/xiidigital/xii-django-river-admin/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/xiidigital/xii-django-river-admin/actions/workflows/ci.yml
 
-.. |Doc Status| image:: https://readthedocs.org/projects/river-admin/badge/?version=latest
-    :target: https://river-admin.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
-
-.. |Licence| image:: https://img.shields.io/github/license/javrasya/river-admin
+.. |Licence| image:: https://img.shields.io/github/license/xiidigital/xii-django-river-admin
     :alt: GitHub license
-    :target: https://github.com/javrasya/river-admin/blob/master/LICENSE
+    :target: https://github.com/xiidigital/xii-django-river-admin/blob/master/LICENSE
 
-.. |Coverage Status| image:: https://coveralls.io/repos/github/javrasya/river-admin/badge.svg?branch=master
-    :target: https://coveralls.io/github/javrasya/river-admin?branch=master
-
-.. |Code Quality| image:: https://api.codacy.com/project/badge/Grade/3e7f03e8df5a488f90fb0ed93295c41b
-    :target: https://www.codacy.com/manual/javrasya/river-admin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=javrasya/river-admin&amp;utm_campaign=Badge_Grade
-
-.. |Downloads| image:: https://img.shields.io/pypi/dm/river-admin
+.. |Downloads| image:: https://img.shields.io/pypi/dm/xii-django-river-admin
     :alt: PyPI - Downloads
 
 .. |Timeline Img| image:: /_static/images/timeline-in-macbook.png
@@ -30,51 +20,33 @@
 
 
 
-River Admin
-===========
+xii-django-river-admin
+=======================
 
 .. rst-class:: center-without-bg
 
-|Build Status| |Doc Status| |Licence| |Coverage Status| |Code Quality| |Downloads|
+|Build Status| |Licence| |Downloads|
 
-``River Admin`` is a very modern and
+``xii-django-river-admin`` is a very modern and
 a shiny customizable admin extension with user friendly and easy to use
-interfaces for django-river_ . The power of it comes from the libraries
-it uses on both backend and frontend sides which are ``django-river``,
-``django-rest-framework`` ``Vue`` and ``Vuetify``.
-
-`River Admin Website`_
-
-.. _`River Admin Website`: https://riveradminproject.com/
+interfaces for xii-django-river_ (XII Digital's fork of django-river,
+modernized for Django 4.2-6.0 and Python 3.10-3.13). It is the matching
+fork of the original river-admin_ project. The power of it comes from
+the libraries it uses on both backend and frontend sides which are
+``xii-django-river``, ``django-rest-framework``, ``Vue 3`` and ``Vuetify 3``.
 
 .. rst-class:: center-without-bg
 
 |Images|
 
+.. _xii-django-river: https://github.com/xiidigital/xii-django-river/
+.. _river-admin: https://github.com/javrasya/river-admin
 
-.. _django-river: https://github.com/javrasya/django-river/
+Demo
+====
 
-Donations
-=========
-
-This is a fully open source project and it can be better with your donations.
-
-If you are using ``River Admin`` to create a commercial product,
-please consider becoming our `sponsor`_  , `patron`_ or donate over `PayPal`_
-
-.. _`patron`: https://www.patreon.com/javrasya
-.. _`PayPal`: https://paypal.me/ceahmetdal
-.. _`sponsor`: https://github.com/sponsors/javrasya
-
-Live Demo
-=========
-
-http://demo.riveradminproject.com/river-admin/
-
-- User: demo
-- Password: demo
-
-To run demo locally;
+There is no hosted public demo for this fork. To run the bundled demo
+locally instead:
 
    .. code:: bash
 
@@ -86,14 +58,14 @@ To run demo locally;
         python manage.py bootstrap_river_admin_demo
         python manage.py runserver
 
-And then go to ``http://127.0.0.1:8000/river-admin/``
+And then go to ``http://127.0.0.1:8000/xii-django-river-admin/``
 
 **Note:** Create an admin user for yourself if you would like more access.
 
 Getting Started
 ===============
 
-You can easily get started with ``django-river`` by
+You can easily get started with ``xii-django-river`` by
 following :ref:`getting-started`.
 
 Contents

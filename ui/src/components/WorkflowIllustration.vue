@@ -17,8 +17,6 @@ import * as d3 from "d3";
 import d3Tip from "d3-tip";
 import dagreD3 from "dagre-d3";
 
-d3.tip = d3Tip;
-
 export default {
   name: "WorkflowIllustration",
   props: ["states", "transitions", "editable", "state_class_mapping"],
@@ -195,8 +193,7 @@ export default {
 
     _setup_tooltips(inner) {
       var that = this;
-      var tip = d3
-        .tip()
+      var tip = d3Tip()
         .attr("class", "d3-tip")
         .offset([-10, 0])
         .html(function(d) {

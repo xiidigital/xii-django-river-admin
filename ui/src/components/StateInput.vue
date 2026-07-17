@@ -3,9 +3,9 @@
     v-model="model"
     :items="items"
     :loading="loading"
-    :search-input.sync="search"
+    v-model:search="search"
     hide-selected
-    item-text="final_label"
+    item-title="final_label"
     :label="placeholder"
     :disabled="disabled"
     v-if="initialized"
@@ -21,18 +21,16 @@
       </v-list-item>
     </template>
     <template
-      v-slot:selection="{ attr, on, item, selected }"
-    >{{ item.label }} ( {{ item.description }} )</template>
-    <template v-slot:item="{ item }">
-      <v-list-item-content>
-        <v-tooltip top v-if="item.description">
-          <template v-slot:activator="{ on }">
-            <v-list-item-title v-on="on" v-text="item.final_label"></v-list-item-title>
-          </template>
-          <span>{{ item.description}}</span>
-        </v-tooltip>
-        <v-list-item-title v-else v-text="item.final_label"></v-list-item-title>
-      </v-list-item-content>
+      v-slot:selection="{ item }"
+    >{{ item.raw.label }} ( {{ item.raw.description }} )</template>
+    <template v-slot:item="{ item, props }">
+      <v-tooltip location="top" v-if="item.raw.description">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-list-item v-bind="{ ...props, ...activatorProps }" :title="item.raw.final_label"></v-list-item>
+        </template>
+        <span>{{ item.raw.description }}</span>
+      </v-tooltip>
+      <v-list-item v-else v-bind="props" :title="item.raw.final_label"></v-list-item>
     </template>
   </v-autocomplete>
 </template>

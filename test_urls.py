@@ -1,8 +1,8 @@
-from django.conf.urls import url, include
 from django.contrib import admin
+from django.urls import include, re_path
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include("river_admin.urls")),
-    url(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^', include("xii.django_river_admin.urls")),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
 ]

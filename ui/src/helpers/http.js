@@ -9,8 +9,16 @@ class Http {
     _request(options, callback) {
         return axios(options).then(callback).catch(error => {
             if (error.response) {
-                if (error.response.status === 401 || error.response.status === 403) {
+                if (error.response.status === 401) {
+                    // Not authenticated (missing/expired token) - the user needs to log in again.
                     emit_logout()
+                } else if (error.response.status === 403) {
+                    // Authenticated but not allowed to do this one thing - permission
+                    // errors used to be treated the same as "not logged in" here, which
+                    // logged the user out of the whole app just for hitting a button
+                    // they lack a permission for. Show the error instead and let them
+                    // keep working.
+                    emit_error(this.build_permission_error_message(error.response))
                 } else {
                     this.handle_error(error.response)
                 }
@@ -18,6 +26,11 @@ class Http {
                 console.error(error)
             }
         })
+    }
+
+    build_permission_error_message(response) {
+        const detail = response.data && response.data.detail;
+        return detail || "You don't have permission to do that.";
     }
 
     get(url, callback) {
@@ -43,7 +56,7 @@ class Http {
                         emit_error(this.build_protection_error_messages(err));
                         break;
                     default:
-                        console.log(`An unexpected error occured with the code ${err.error_code}`);
+                        console.error(`An unexpected error occured with the code ${err.error_code}`);
                 }
             });
         }

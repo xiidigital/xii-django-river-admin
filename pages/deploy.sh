@@ -4,12 +4,13 @@
 set -e
 
 # build
-yarn build
+npm run build
 
 # navigate into the build output directory
 cd dist
 
-# if you are deploying to a custom domain
+# NOTE: this fork does not have a custom domain configured yet.
+# If/when one is chosen, uncomment and set it below:
 # echo 'www.example.com' > CNAME
 
 git init
@@ -17,6 +18,6 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:javrasya/river-admin-pages.git master:gh-pages
+git push -f git@github.com:xiidigital/xii-django-river-admin.git master:gh-pages
 
 cd -

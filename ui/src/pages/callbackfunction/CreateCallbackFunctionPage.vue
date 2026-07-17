@@ -40,7 +40,8 @@
 </template>
 
 <script>
-import CodeEditor from "@/components/CodeEditor.vue";
+import { defineAsyncComponent } from "vue";
+const CodeEditor = defineAsyncComponent(() => import("@/components/CodeEditor.vue"));
 import { emit_success } from "@/helpers/event_bus";
 import http from "@/helpers/http";
 

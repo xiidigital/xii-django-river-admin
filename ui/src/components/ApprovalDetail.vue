@@ -11,8 +11,7 @@
           v-if="editable"
           class="mt-5"
           v-model="fab"
-          :bottom="true"
-          :right="true"
+          location="bottom end"
           direction="left"
           :open-on-hover="true"
         >
@@ -23,18 +22,18 @@
             </v-btn>
           </template>
 
-          <v-tooltip top>
-            <template v-slot:activator="{ on }">
-              <v-btn fab dark small v-on="on" color="green" @click="newHookDialog=true">
+          <v-tooltip location="top">
+            <template v-slot:activator="{ props }">
+              <v-btn fab dark small v-bind="props" color="green" @click="newHookDialog=true">
                 <v-icon>mdi-function-variant</v-icon>
               </v-btn>
             </template>
             <span>Create Approval Hook</span>
           </v-tooltip>
 
-          <v-tooltip top>
-            <template v-slot:activator="{ on }">
-              <v-btn fab dark small v-on="on" color="warning" @click="delete_approval()">
+          <v-tooltip location="top">
+            <template v-slot:activator="{ props }">
+              <v-btn fab dark small v-bind="props" color="warning" @click="delete_approval()">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
             </template>
@@ -52,7 +51,7 @@
               <v-col>
                 <span v-bind:key="permission.id" v-for="(permission,index) in approval.permissions">
                   <v-chip color="primary" class="white--text">
-                    <v-icon left>mdi-lock</v-icon>
+                    <v-icon start>mdi-lock</v-icon>
                     <span v-text="permission.identifier"></span>
                   </v-chip>
                   <span v-if="index != approval.permissions.length-1">or</span>
@@ -66,7 +65,7 @@
               <v-col>
                 <span v-bind:key="group.id" v-for="(group,index) in approval.groups">
                   <v-chip color="primary" class="white--text">
-                    <v-icon left>mdi-account-multiple</v-icon>
+                    <v-icon start>mdi-account-multiple</v-icon>
                     <span v-text="group.name"></span>
                   </v-chip>
                   <span v-if="index != approval.groups.length-1">or</span>

@@ -40,7 +40,8 @@
 </template>
 
 <script>
-import CodeEditor from "@/components/CodeEditor.vue";
+import { defineAsyncComponent } from "vue";
+const CodeEditor = defineAsyncComponent(() => import("@/components/CodeEditor.vue"));
 import { emit_success } from "@/helpers/event_bus";
 import http from "@/helpers/http";
 
@@ -58,7 +59,6 @@ export default {
   mounted() {
     var function_id = this.$route.params.id;
     http.get(`/function/get/${function_id}/`, response => {
-      console.log(response);
       this.callback_function_name = response.data.name;
       this.callback_function_body = response.data.body;
     });

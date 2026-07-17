@@ -6,8 +6,8 @@ List Functions
 ==============
 
 .. note::
-    In order to see this page, your user has to have ``river.view_function``
-    or ``river.change_function`` permissions in older version of ``Django``.
+    In order to see this page, your user has to have ``xii_django_river.view_function``
+    or ``xii_django_river.change_function`` permissions in older version of ``Django``.
 
 On this page you can be navigated to the create page by
 clicking the button with the plus icon on the right

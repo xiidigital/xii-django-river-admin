@@ -9,9 +9,9 @@
               v-model="selected_function"
               :items="functions"
               :loading="functions_loading"
-              :search-input.sync="search_functions"
+              v-model:search="search_functions"
               hide-selected
-              item-text="name"
+              item-title="name"
               label="Search functions"
               clearable
               chips
@@ -25,22 +25,18 @@
                   </v-list-item-title>
                 </v-list-item>
               </template>
-              <template v-slot:selection="{ attr, on, item, selected }">
+              <template v-slot:chip="{ props, item }">
                 <v-chip
-                  v-bind="attr"
-                  :input-value="selected"
+                  v-bind="props"
                   color="primary"
                   class="white--text"
-                  v-on="on"
                 >
-                  <v-icon left>mdi-function-variant</v-icon>
-                  <span v-text="item.name"></span>
+                  <v-icon start>mdi-function-variant</v-icon>
+                  <span v-text="item.raw.name"></span>
                 </v-chip>
               </template>
-              <template v-slot:item="{ item }">
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.name"></v-list-item-title>
-                </v-list-item-content>
+              <template v-slot:item="{ item, props }">
+                <v-list-item v-bind="props" :title="item.raw.name"></v-list-item>
               </template>
             </v-autocomplete>
           </v-col>

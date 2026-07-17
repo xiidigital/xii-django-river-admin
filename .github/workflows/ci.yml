@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        django: ["4.2", "5.2", "6.0"]
+        exclude:
+          - python-version: "3.10"
+            django: "6.0"
+          - python-version: "3.11"
+            django: "6.0"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout xii-django-river
+        # xii-django-river isn't published to PyPI (only this package,
+        # xii-django-river-admin, is meant to be released there) - it's a
+        # sibling repo developed alongside this one, so it's checked out
+        # and installed from source instead. `pip install -e` here means
+        # the `xii-django-river>=4.0.0` entry in requirements.txt below is
+        # already satisfied and pip won't try (and fail) to fetch it from
+        # PyPI.
+        uses: actions/checkout@v4
+        with:
+          repository: xiidigital/xii-django-river
+          path: xii-django-river
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "Django~=${{ matrix.django }}.0" -e ./xii-django-river
+          pip install -r requirements.txt
+      - name: Run tests
+        # --top-level-directory=. is required: `xii` is a PEP 420 namespace
+        # package (shared with xii-django-river). Without it, unittest's
+        # dotted-label discovery auto-detects the top-level dir by walking
+        # up looking for __init__.py, stops one level too early at
+        # xii/django_river_admin, and re-imports every test module a second
+        # time under the wrong qualified name - colliding with the app
+        # registered under xii.django_river_admin in INSTALLED_APPS.
+        run: python manage.py test xii.django_river_admin --top-level-directory=. --settings=test_settings
+
+  lint-ui:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn test:unit

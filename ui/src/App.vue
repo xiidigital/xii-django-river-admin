@@ -10,10 +10,10 @@
       class="mt-10"
       v-model="show_snackbar"
       :color="snackbar_color"
-      :top="true"
+      location="top"
       :timeout="snackbar_timeout"
     >
-      <v-icon color="white" left>{{ snackbar_icon }}</v-icon>
+      <v-icon color="white" start>{{ snackbar_icon }}</v-icon>
       <v-container>
         <v-row v-for="(snackbar_text,index) in snackbar_texts" v-bind:key="index">
           <v-col>{{ snackbar_text }}</v-col>

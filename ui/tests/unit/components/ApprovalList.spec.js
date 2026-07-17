@@ -1,5 +1,7 @@
-import Vuetify from 'vuetify'
-import Vue from 'vue'
+import { describe, it, beforeEach, expect } from 'vitest'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 import { mount } from '@vue/test-utils'
 import { Workflow, State, Approval } from "@/models/models"
 import ApprovalDetail from '@/components/ApprovalDetail.vue'
@@ -9,23 +11,25 @@ describe('ApprovalList.vue', () => {
     let vuetify
 
     beforeEach(() => {
-        vuetify = new Vuetify()
-        Vue.use(Vuetify)
+        vuetify = createVuetify({ components, directives })
     })
+
+    function mount_component(propsData) {
+        return mount(ApprovalList, {
+            global: { plugins: [vuetify] },
+            props: propsData
+        })
+    }
 
     it('should not render any approval when the list is empty', async () => {
         var initial_state = State.of("state-1", "test-state")
         var content_type = { "app_label": "test-app", "model": "test-model" }
         var workflow = Workflow.of("workflow-1", content_type, initial_state, "test_field");
 
-        const wrapper = mount(ApprovalList, {
-            vuetify,
-            sync: false,
-            propsData: { workflow, approvals: [], editable: true }
-        })
+        const wrapper = mount_component({ workflow, approvals: [], editable: true })
         await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(ApprovalDetail)).toHaveLength(0)
-        expect(wrapper.find("div.container div.col").text()).toBe("No approval step")
+        expect(wrapper.findAllComponents(ApprovalDetail)).toHaveLength(0)
+        expect(wrapper.find("div.v-container div.v-col").text()).toBe("No approval step")
         expect(wrapper.element).toMatchSnapshot()
     })
 
@@ -38,13 +42,9 @@ describe('ApprovalList.vue', () => {
         var transition_id = "transition-1"
         var approval = Approval.of("approval-1", workflow, transition_id, [], [], 0)
 
-        const wrapper = mount(ApprovalList, {
-            vuetify,
-            sync: false,
-            propsData: { workflow, approvals: [approval], editable: true },
-        })
+        const wrapper = mount_component({ workflow, approvals: [approval], editable: true })
         await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(ApprovalDetail)).toHaveLength(1)
+        expect(wrapper.findAllComponents(ApprovalDetail)).toHaveLength(1)
         expect(wrapper.text()).not.toContain("No approval step")
         expect(wrapper.element).toMatchSnapshot()
     })
@@ -59,13 +59,9 @@ describe('ApprovalList.vue', () => {
         var approval_2 = Approval.of("approval-2", workflow, transition_id, [], [], 1)
         var approval_3 = Approval.of("approval-3", workflow, transition_id, [], [], 2)
 
-        const wrapper = mount(ApprovalList, {
-            vuetify,
-            sync: false,
-            propsData: { workflow, approvals: [approval_1, approval_2, approval_3], editable: true },
-        })
+        const wrapper = mount_component({ workflow, approvals: [approval_1, approval_2, approval_3], editable: true })
         await wrapper.vm.$nextTick();
-        expect(wrapper.findAll(ApprovalDetail)).toHaveLength(3)
+        expect(wrapper.findAllComponents(ApprovalDetail)).toHaveLength(3)
         expect(wrapper.text()).not.toContain("No approval step")
         expect(wrapper.element).toMatchSnapshot()
     })
@@ -79,11 +75,7 @@ describe('ApprovalList.vue', () => {
         var approval_2 = Approval.of("approval-2", workflow, transition_id, [], [], 1)
         var approval_3 = Approval.of("approval-3", workflow, transition_id, [], [], 2)
 
-        const wrapper = mount(ApprovalList, {
-            vuetify,
-            sync: false,
-            propsData: { workflow, approvals: [approval_1, approval_2, approval_3], editable: false }
-        })
+        const wrapper = mount_component({ workflow, approvals: [approval_1, approval_2, approval_3], editable: false })
 
 
         var re_prioritized_approvals = [approval_3, approval_1, approval_2]
@@ -111,17 +103,13 @@ describe('ApprovalList.vue', () => {
         var approval_2 = Approval.of("approval-2", workflow, transition_id, [], [], 1)
 
         var approvals = [approval_1, approval_2];
-        const wrapper = mount(ApprovalList, {
-            vuetify,
-            sync: false,
-            propsData: { workflow, approvals, editable: false }
-        })
+        const wrapper = mount_component({ workflow, approvals, editable: false })
         expect(wrapper.vm.items).toHaveLength(2)
 
         var approval_3 = Approval.of("approval-3", workflow, transition_id, [], [], 2)
         var new_approvals = [approval_1, approval_2, approval_3];
 
-        wrapper.setProps({ approvals: new_approvals })
+        await wrapper.setProps({ approvals: new_approvals })
         await wrapper.vm.$nextTick();
 
         expect(wrapper.vm.items).toHaveLength(3)

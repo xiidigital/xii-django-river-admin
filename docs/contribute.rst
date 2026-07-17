@@ -3,13 +3,13 @@
 Contribute
 ==========
 
-``River Admin`` consists of two parts that are backend and ui.
+``xii-django-river-admin`` consists of two parts that are backend and ui.
 It is built with `Django Rest Framework`_ on the backend
 side whereas Vue_ on the front end side.
 
-Rive Admin Backend
-------------------
-``River Admin`` backend side is built with ``Django``
+Backend
+-------
+The backend side is built with ``Django``
 and `Django Rest Framework`_. So you need ``Django``
 development environment to be set up.
 
@@ -29,7 +29,7 @@ development environment to be set up.
 
    .. code:: bash
 
-       pip install wheel setuptools twine
+       pip install build twine
 
 4. You are ready to develop the backend side now.
 
@@ -44,7 +44,7 @@ Tests
 ~~~~~
 
 Tox_ is used on the backend side to automate ``Python`` & ``Django``
-testing. Tests are under ``river-admin/tets/``. Simply run
+testing. Tests are under ``xii/django_river_admin/tests/``. Simply run
 
    .. code:: bash
 
@@ -54,13 +54,13 @@ To run it for a specific environment;
 
    .. code:: bash
 
-       tox -e py34-dj2.1
+       tox -e py312-dj52
 
-River Admin UI
---------------
+UI
+--
 
-``River Admin`` ui is built with Vue_. So you need ``Vue``
-development environment to be set up.
+The ui is built with Vue_ 3 + Vuetify 3 + Vite. So you need a
+``Node.js``/Vue development environment to be set up.
 
 1. Install ``node`` & ``npm``
 2. Install ``yarn`` (`Install Yarn`_)
@@ -74,12 +74,12 @@ development environment to be set up.
 Development
 ~~~~~~~~~~~
 
-While developing the front end ``Vue`` app of ``River Admin``,
-you can run it without building it and the server will
-auotmatically reload on any changes in the code. This is quite
-useful thing for fast feedback and debugging. One thing you
-should make sure before you run this, backend server is also
-running since it needs to call the backend
+While developing the front end ``Vue`` app,
+you can run it without building it and the dev server will
+automatically reload on any changes in the code (Vite's hot module
+reload). This is quite a useful thing for fast feedback and debugging.
+One thing you should make sure before you run this, backend server is
+also running since it needs to call the backend
 
    .. code:: bash
 
@@ -87,18 +87,20 @@ running since it needs to call the backend
 
    .. code:: bash
 
-       yarn serve
+       cd ui
+       yarn dev
 
 
 Tests
 ~~~~~
 
-UI tests are written with Jest_ javascript testing
-framework from Facebook. Tests are under ``ui/tets/``.
+UI tests are written with Vitest_ against Vue Test Utils. Tests are
+under ``ui/tests/``.
 To run the tests simply;
 
    .. code:: bash
 
+       cd ui
        yarn test:unit
 
 To run a specific one;
@@ -107,7 +109,7 @@ To run a specific one;
 
        yarn test:unit StateInput.spec.js
 
-To run the tests with a fresh snapshot (to clean the snapshots);
+To run the tests with fresh snapshots (to clean the snapshots);
 
    .. code:: bash
 
@@ -118,11 +120,12 @@ Build
 
    .. code:: bash
 
+       cd ui
        yarn build
 
 
 The distribution folders of the ``Vue`` app are
-``river_admin/templates`` and ``river_admin/static``.
+``xii/django_river_admin/templates`` and ``xii/django_river_admin/static``.
 The reason for that is because a ``Django`` app should
 contains all the ``html`` and ``static`` files under
 ``templates`` and ``static`` folders.
@@ -131,6 +134,6 @@ contains all the ``html`` and ``static`` files under
 .. _Vue: https://vuejs.org/
 .. _`Install Yarn`: https://yarnpkg.com/en/docs/install
 .. _`Django Rest Framework`: https://www.django-rest-framework.org/
-.. _Jest: https://jestjs.io/
+.. _Vitest: https://vitest.dev/
 .. _Tox: https://tox.readthedocs.io/en/latest/
 .. _Twine: https://pypi.org/project/twine/

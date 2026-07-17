@@ -1,171 +1,186 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`StateInput.vue should filter out those that doesnt match the search 1`] = `
+exports[`StateInput.vue > should filter out those that doesnt match the search 1`] = `
 <v-autocomplete-stub
-  allowoverflow="true"
-  appendicon="$dropdown"
-  backgroundcolor=""
+  active="false"
+  autofocus="false"
+  autoselectfirst="false"
+  chips="false"
   clearable="true"
   clearicon="$clear"
-  errorcount="1"
+  clearonselect="false"
+  closablechips="false"
+  closetext="$vuetify.close"
+  counter="false"
+  density="default"
+  disabled="false"
+  eager="false"
+  error="false"
   errormessages=""
-  filter="function _default(item, queryText, itemText) {
-        return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
-      }"
+  filterkeys="title"
+  filtermode="intersection"
+  flat="false"
+  focused="false"
+  glow="false"
+  hidedetails="false"
+  hidenodata="false"
   hideselected="true"
-  itemcolor="primary"
-  itemdisabled="disabled"
-  items=""
-  itemtext="final_label"
+  hidespinbuttons="false"
+  iconcolor="false"
+  itemchildren="false"
+  itemprops="props"
+  items="[object Object],[object Object]"
+  itemtitle="final_label"
+  itemtype="type"
   itemvalue="value"
   label="Test state"
-  loaderheight="2"
-  loading="true"
-  menuprops="[object Object]"
+  loading="false"
+  maxerrors="1"
+  menu="false"
+  menuicon="$dropdown"
   messages=""
+  multiple="false"
+  noautoscroll="false"
   nodatatext="$vuetify.noDataText"
+  nofilter="false"
+  openonclear="false"
+  opentext="$vuetify.open"
+  persistentclear="false"
+  persistentcounter="false"
+  persistenthint="false"
+  persistentplaceholder="false"
   returnobject="true"
+  reverse="false"
+  role="combobox"
   rules=""
-  searchinput="Op"
-  successmessages=""
+  search="Op"
+  singleline="false"
+  tile="false"
   type="text"
-  valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
-
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
-
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
-
-  var props = Object.keys(a);
-
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
-
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}"
+  variant="filled"
 />
 `;
 
-exports[`StateInput.vue should not fetch states unless the typing starts 1`] = `<!---->`;
+exports[`StateInput.vue > should not fetch states unless the typing starts 1`] = `<!--v-if-->`;
 
-exports[`StateInput.vue should not show creating state option when user is not authorized 1`] = `
+exports[`StateInput.vue > should not show creating state option when user is not authorized 1`] = `
 <v-autocomplete-stub
-  allowoverflow="true"
-  appendicon="$dropdown"
-  backgroundcolor=""
+  active="false"
+  autofocus="false"
+  autoselectfirst="false"
+  chips="false"
   clearable="true"
   clearicon="$clear"
-  errorcount="1"
+  clearonselect="false"
+  closablechips="false"
+  closetext="$vuetify.close"
+  counter="false"
+  density="default"
+  disabled="false"
+  eager="false"
+  error="false"
   errormessages=""
-  filter="function _default(item, queryText, itemText) {
-        return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
-      }"
+  filterkeys="title"
+  filtermode="intersection"
+  flat="false"
+  focused="false"
+  glow="false"
+  hidedetails="false"
+  hidenodata="false"
   hideselected="true"
-  itemcolor="primary"
-  itemdisabled="disabled"
-  items=""
-  itemtext="final_label"
+  hidespinbuttons="false"
+  iconcolor="false"
+  itemchildren="false"
+  itemprops="props"
+  items="[object Object],[object Object]"
+  itemtitle="final_label"
+  itemtype="type"
   itemvalue="value"
   label="Test state"
-  loaderheight="2"
-  loading="true"
-  menuprops="[object Object]"
+  loading="false"
+  maxerrors="1"
+  menu="false"
+  menuicon="$dropdown"
   messages=""
+  multiple="false"
+  noautoscroll="false"
   nodatatext="$vuetify.noDataText"
+  nofilter="false"
+  openonclear="false"
+  opentext="$vuetify.open"
+  persistentclear="false"
+  persistentcounter="false"
+  persistenthint="false"
+  persistentplaceholder="false"
   returnobject="true"
+  reverse="false"
+  role="combobox"
   rules=""
-  searchinput="sta"
-  successmessages=""
+  search="sta"
+  singleline="false"
+  tile="false"
   type="text"
-  valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
-
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
-
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
-
-  var props = Object.keys(a);
-
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
-
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}"
+  variant="filled"
 />
 `;
 
-exports[`StateInput.vue should show creating state option when user is authorized 1`] = `
+exports[`StateInput.vue > should show creating state option when user is authorized 1`] = `
 <v-autocomplete-stub
-  allowoverflow="true"
-  appendicon="$dropdown"
-  backgroundcolor=""
+  active="false"
+  autofocus="false"
+  autoselectfirst="false"
+  chips="false"
   clearable="true"
   clearicon="$clear"
-  errorcount="1"
+  clearonselect="false"
+  closablechips="false"
+  closetext="$vuetify.close"
+  counter="false"
+  density="default"
+  disabled="false"
+  eager="false"
+  error="false"
   errormessages=""
-  filter="function _default(item, queryText, itemText) {
-        return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
-      }"
+  filterkeys="title"
+  filtermode="intersection"
+  flat="false"
+  focused="false"
+  glow="false"
+  hidedetails="false"
+  hidenodata="false"
   hideselected="true"
-  itemcolor="primary"
-  itemdisabled="disabled"
-  items=""
-  itemtext="final_label"
+  hidespinbuttons="false"
+  iconcolor="false"
+  itemchildren="false"
+  itemprops="props"
+  items="[object Object],[object Object],[object Object]"
+  itemtitle="final_label"
+  itemtype="type"
   itemvalue="value"
   label="Test state"
-  loaderheight="2"
-  loading="true"
-  menuprops="[object Object]"
+  loading="false"
+  maxerrors="1"
+  menu="false"
+  menuicon="$dropdown"
   messages=""
+  multiple="false"
+  noautoscroll="false"
   nodatatext="$vuetify.noDataText"
+  nofilter="false"
+  openonclear="false"
+  opentext="$vuetify.open"
+  persistentclear="false"
+  persistentcounter="false"
+  persistenthint="false"
+  persistentplaceholder="false"
   returnobject="true"
+  reverse="false"
+  role="combobox"
   rules=""
-  searchinput="sta"
-  successmessages=""
+  search="sta"
+  singleline="false"
+  tile="false"
   type="text"
-  valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
-
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
-
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
-
-  var props = Object.keys(a);
-
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
-
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}"
+  variant="filled"
 />
 `;

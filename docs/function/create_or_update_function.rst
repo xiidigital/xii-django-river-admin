@@ -6,16 +6,16 @@ Create & Update Function
 ========================
 
 .. note::
-    ``River Admin`` is not extending the APIs of ``django-river``.
+    ``xii-django-river-admin`` is not extending the APIs of ``xii-django-river``.
     In order to see how your functions should look like please
-    visit the `django river function documentation`_ itself
+    visit the `xii-django-river function documentation`_ itself
 
 .. note::
     In order to see this page, your user has to have
-    ``river.add_function`` permission.
-    
+    ``xii_django_river.add_function`` permission.
 
-.. _django river function documentation: https://django-river.readthedocs.io/en/latest/hooking/function.html#context-parameter
+
+.. _xii-django-river function documentation: https://github.com/xiidigital/xii-django-river/blob/master/docs/hooking/function.rst
 
 |Create Function|
 

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row justify="center" align="center">
-      <v-flex xs12 sm6 md4>
+      <v-col cols="12" sm="6" md="4">
         <v-row justify="center" align="center">
           <v-icon style="font-size:150px">
             <slot name="icon"></slot>
@@ -22,7 +22,7 @@
             <slot name="content"></slot>
           </v-col>
         </v-row>
-      </v-flex>
+      </v-col>
     </v-row>
   </v-container>
 </template>

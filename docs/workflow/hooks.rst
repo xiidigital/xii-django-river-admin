@@ -37,7 +37,7 @@ first one
 
 After ``django-river`` version ``3.0.0``, hooks
 are supported on the fly and this is another
-feature of ``django-river`` which ``River Admin``
+feature of ``django-river`` which ``xii-django-river-admin``
 has some interfaces for.
 
 Hooks are managed on the same page with authorizations
@@ -51,12 +51,12 @@ please take a look at :ref:`how to naivagate authorizations`
 
 .. note::
     Even though ``django-river`` supports transition, approvals
-    and workflow completing events to hook up, ``River Admin``
+    and workflow completing events to hook up, ``xii-django-river-admin``
     currently supports only transitions and approval hooks.
 
     Apart from that even tough ``django-river`` gives you the capability of
     defining your hooks before the event happens or after the
-    event happens, ``River Admin`` simplifies this by just
+    event happens, ``xii-django-river-admin`` simplifies this by just
     allowing ``before transition happens`` and
     ``after an authorization rule is approved`` for the sake of
     convinience. By this it is very smooth to create your workflow

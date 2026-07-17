@@ -6,8 +6,8 @@ List Workflow Objects
 =====================
 
 .. note::
-    In order to see this page, your user has to have ``river.view_workflow``
-    or ``river.change_workflow`` in older version of ``Django``.
+    In order to see this page, your user has to have ``xii_django_river.view_workflow``
+    or ``xii_django_river.change_workflow`` in older version of ``Django``.
 
 After you are navigated by clicking your workflow icon on the left panel
 you will be run into a listing page where all of your workflow objects
