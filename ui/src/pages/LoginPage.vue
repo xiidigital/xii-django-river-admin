@@ -42,6 +42,7 @@
 <script>
 import { auth, WORKFLOW } from "@/helpers/auth";
 import { emit_error } from "@/helpers/event_bus";
+import { API_PREFIX } from "@/helpers/http";
 import axios from "axios";
 export default {
   props: {
@@ -56,7 +57,7 @@ export default {
       this.error_message = null;
       this.alert = false;
       axios
-        .post("/api-token-auth/", { username: this.username, password: this.password })
+        .post(`${API_PREFIX}/api-token-auth/`, { username: this.username, password: this.password })
         .then(response => {
           this.$store.commit("setAuthToken", response.data.token);
           auth.has_view_permission(WORKFLOW, yes => {

@@ -4,10 +4,39 @@ import { CAN_NOT_DELETE_DUE_TO_PROTECTION } from "@/helpers/errors"
 import { emit_logout, emit_error } from "@/helpers/event_bus"
 
 const getHeaders = () => ({ Authorization: `Token ${store.state.user.token}` })
+
+// Every call site in this app (auth.js, all pages/components) passes
+// root-relative paths like "/workflow/list/" or "/api-token-auth/",
+// written under the assumption that this SPA is mounted at the site root
+// (as it is in the bundled demo project's urls.py). That breaks as soon as
+// it's included under any other prefix (e.g. path("river-admin/", include(...))
+// in a host project) - those requests hit the host's root urlconf instead of
+// this app's own API and 404/CSRF-fail there.
+//
+// The index route this SPA is served from is always
+// "<prefix>xii-django-river-admin/" (see xii/django_river_admin/views/__init__.py's
+// `index` view - that trailing segment is fixed, only <prefix> varies), so
+// the mount prefix can be recovered at runtime from the page's own URL
+// instead of requiring every call site to know it. Resolves to "" when
+// mounted at the root, so root-mounted deployments (the demo project, and
+// any test environment where this marker isn't in the URL) are unaffected.
+// Exported (not just used internally) because LoginPage.vue's login() call
+// happens before there's a token to attach, so it can't go through
+// Http.post() below (that always sends an Authorization header, including a
+// literal "Token null" pre-login, which the backend would - correctly -
+// reject as an invalid token, not just "unauthenticated"). It makes its own
+// raw axios call and needs this same prefix.
+export const API_PREFIX = (() => {
+    const marker = 'xii-django-river-admin/';
+    const idx = window.location.pathname.indexOf(marker);
+    const prefix = idx === -1 ? '' : window.location.pathname.slice(0, idx);
+    return prefix.endsWith('/') ? prefix.slice(0, -1) : prefix;
+})();
+
 class Http {
 
     _request(options, callback) {
-        return axios(options).then(callback).catch(error => {
+        return axios({ ...options, url: `${API_PREFIX}${options.url}` }).then(callback).catch(error => {
             if (error.response) {
                 if (error.response.status === 401) {
                     // Not authenticated (missing/expired token) - the user needs to log in again.
